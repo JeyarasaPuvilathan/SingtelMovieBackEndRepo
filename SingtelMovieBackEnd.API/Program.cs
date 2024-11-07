@@ -8,7 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
 builder.Services.AddCors(options =>
-{//
+{
     options.AddPolicy(name: MyAllowSpecificOrigins,
         builder =>
         {
@@ -35,11 +35,12 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
+app.UseSwagger();
+app.UseSwaggerUI();
 
 // Configure the HTTP request pipeline.
 //if (app.Environment.IsDevelopment())
 //{
-//    app.UseDeveloperExceptionPage();
 //    app.UseSwagger();
 //    app.UseSwaggerUI();
 //}
